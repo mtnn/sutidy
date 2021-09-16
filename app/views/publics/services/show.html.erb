@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <% if @service.image.attached? %>
+        <%= image_tag @service.image.variant(resize: '320x240') %>
+      <% else %>
+        <%= image_tag 'sutidy_noimage.png'%>
+      <% end %>
+    </div>
+    <div class="col-md-5">
+      <h2><%= @service.name %></h2>
+      <p><%= @service.description %></p>
+      <p>¥<strong><%= @service.price %></strong>(税込)</p>
+    </div>
+  </div>
+</div>

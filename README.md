@@ -1,24 +1,37 @@
-# README
+# Sutidy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+Sutidyはサブスクリプションマーケットサービスです。<br>
+このサービスを通し、誰もが気軽に自身のサブスクリプションサービスを利用・展開することができます。<br>
+また、利用者はSutidyを介して新規のサブスクリプションサービスと出会うだけで無く、マイページ上の管理ページから自身の加入しているサブスクサービスを整理することができる点がSutidyの特徴となります。<br>
 
-Things you may want to cover:
+### サイトテーマ
+これまでのサブスクを見直し、新しい体験との出会いを提供するマーケットサービス
 
-* Ruby version
+### テーマを選んだ理由
+テーマ選択の背景は「既存サービスの加入管理と新規サービスの展開の場を設けたいから」です。<br>
+サブスクリプションサービスの加入・利用率が増加している近年の中で、加入サービスの管理が難しくなっているのでは？と思い、Sutidyというサービス開発を考案致しました。<br>
+「サプスクの加入整理と新規マーケット」の両面を持つサービスを制作し、今自身に必要なサブスクサービスを見直し、新しいサービスと出会う場を提供できればと考えております。
 
-* System dependencies
+### ターゲットユーザー
+・既にサブスクサービスを利用している方<br>
+・新しい体験に対して好奇心のある方<br>
+・個人・法人問わず、新規サブスクサービスを展開したいと考えている方<br>
 
-* Configuration
+### 主な利用シーン
+・フリーマーケットのように小中規模でのサブスクサービスを展開してみたい<br>
+・複数のサブスクサービスを利用しているユーザーがSutidyを通して、<br>
+　加入状況を一括で管理したい　※外部サービスも含む<br>
+・定期的に実施している習慣をお得に済ませたい<br>
 
-* Database creation
+## 設計書
 
-* Database initialization
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/16GF-8AZ7-I_eL2_rcPfcH7ejDAE4jfKs2b-ecw4jfek/edit#gid=0
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
