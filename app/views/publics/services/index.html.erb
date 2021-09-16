@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-1">
+      <div>
+        <%=link_to "ジャンル名" %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <% @services.each do |service| %>
+        <p>
+        <% if service.image.attached? %>
+          <%= image_tag service.image %>
+        <% else %>
+          <%= image_tag 'sutidy_noimage.png' %>
+        <% end %>
+        </p>
+        <h5><%= service.name %></h5>
+        <p>¥<strong><%= service.price %></strong>(税込)</p>
+      <% end %>
+    </div>
+  </div>
+</div>
