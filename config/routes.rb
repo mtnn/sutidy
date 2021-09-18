@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
 
-  namespace :publics do
-    get 'services/index'
-    get 'services/show'
-    get 'services/update'
-  end
-  namespace :publics do
-    get 'homes/top'
-  end
   scope module: :publics do
     root to: 'homes#top'
+
+    get 'users/mypage' => 'users#mypage'
+    get 'users/mypage' => 'users#new_item'
+    post 'users/mypage' => 'users#create'
+    get 'users/mypage' => 'users#destroy'
+
+    get 'users/profile' => 'users#profile'
+    get 'users/profile/edit' => 'users#edit'
+    patch 'users/profile' => 'users#update'
+    get 'users/quit' => 'users#confirm'
+    patch 'users/quit' => 'users#quit'
 
     resources :services ,only: [:index, :show, :update]
   end
 
   namespace :admins do
+    resources :genres ,only: [:index, :edit, :update]
   end
 
   devise_for :admins, :skip =>[:registrations, :passwords], controllers: {

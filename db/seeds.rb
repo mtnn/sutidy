@@ -24,9 +24,18 @@ User.create!(
   address: '東京都新宿区新宿4-1-9',
   is_deleted: 'false',
   )
-  
+
 Genre.create!(
-  genre_name: 'コンサル',
+  genre_name: 'コーチング',
+  )
+Genre.create!(
+  genre_name: '料理',
+  )
+Genre.create!(
+  genre_name: 'お菓子',
+  )
+Genre.create!(
+  genre_name: 'アクセサリー',
   )
 
 Service.create!(
