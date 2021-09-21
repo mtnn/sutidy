@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <h5>サービス詳細</h5>
+    <h5><%= @service.name %></h5>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <h4>利用者分布</h4>
+
+    </div>
+
+    <div class="col-md-3">
+      <h4>収益合計</h4>
+      <p>¥<strong><%= @service.subscribed_item.sum(:subscribed_price) %></strong>(税込)</p>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h5>請求状況一覧</h5>
+        <table class="table table-hover table-inverse">
+        <% @subscribed_numbers.each do |number| %>
+          <table class="table table-hover table-inverse">
+            <tr>
+              <th>利用者</th>
+              <td><%= number.user.last_name + "" + number.user.first_name %></td>
+            </tr>
+
+            <tr>
+              <th>請求ステータス</th>
+              <td>
+                <%= form_with model: @subscribed_numbers, url: "/clients/analytics" local:true do |f| %>
+                  <td><%= f.select :payment_status, Subscribed_item.payment_statuses.keys %></td>
+                  <td><%= f.submit '更新', class:"btn btn-primary btn-sm"%></td>
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

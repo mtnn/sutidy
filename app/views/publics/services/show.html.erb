@@ -4,13 +4,18 @@
       <% if @service.image.attached? %>
         <%= image_tag @service.image.variant(resize: '320x240') %>
       <% else %>
-        <%= image_tag 'sutidy_noimage.png'%>
+        <%= image_tag 'sutidy_noimage.png' %>
       <% end %>
     </div>
     <div class="col-md-5">
       <h2><%= @service.name %></h2>
       <p><%= @service.description %></p>
       <p>¥<strong><%= @service.price %></strong>(税込)</p>
+      <%= form_with model: @subscribed_item, url:'/services', local:true do |f| %>
+       <%= f.hidden_field :service_id, value: @service.id %>
+       <%= f.hidden_field :subscribed_price, value: @service.price %>
+       <%= f.submit 'サブスクライブ' , class: 'btn btn-success btn-sm'%>
+      <% end %>
     </div>
   </div>
 </div>

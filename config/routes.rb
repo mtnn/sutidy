@@ -14,11 +14,16 @@ Rails.application.routes.draw do
     get 'users/quit' => 'users#confirm'
     patch 'users/quit' => 'users#quit'
 
-    resources :services ,only: [:index, :show, :update]
+    get 'clients/mypage' => 'clients#mypage'
+    get 'clients/analytics/:id' => 'clients#show'
+    get 'clients/analytics/:id' => 'clients#edit'
+    patch 'clients/analytics' => 'clients#update'
+
+    resources :services ,only: [:index, :show, :edit, :update, :new, :create]
   end
 
   namespace :admins do
-    resources :genres ,only: [:index, :edit, :update]
+    resources :genres ,only: [:index, :create, :destroy]
   end
 
   devise_for :admins, :skip =>[:registrations, :passwords], controllers: {

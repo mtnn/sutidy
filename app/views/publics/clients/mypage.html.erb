@@ -1,13 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 offset-md-1">
-      <% @genres.each do |genre| %>
-        <div>
-          <%= genre.genre_name %>
-        </div>
-      <% end %>
-    </div>
     <div class="col-md-8">
+      <h4>展開サービス一覧</h4>
       <% @services.each do |service| %>
         <a>
         <% if service.image.attached? %>
@@ -16,8 +10,13 @@
           <%= image_tag 'sutidy_noimage.png', size: '150x120' %>
         <% end %>
         </a>
-        <h5><%= link_to service.name, service_path(service.id) %></h5>
+        <h5><%= service.name %></h5>
         <p>¥<strong><%= service.price %></strong>(税込)</p>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to(new_service_path) do %>
+        <button class="btn btn-warning btn-lg" >新規サービス作成</button>
       <% end %>
     </div>
   </div>
