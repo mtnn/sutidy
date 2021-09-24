@@ -3,7 +3,7 @@
     <div class="col-md-6 mt-5">
       <h5>新規サービス登録申請</h5>
 
-      <%= form_with model: @service, url: "/services/new", local:true, scope: "service" do |f| %>
+      <%= form_with model: @service, url: services_path, local:true, scope: "service" do |f| %>
 
         <div class="form-group">
           <label>サービス名</label>

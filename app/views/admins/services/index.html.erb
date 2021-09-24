@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <table class='table'>
+        <thead class="thead-light">
+          <tr>
+            <th>サービス</th>
+            <th>クライアント</th>
+            <th>提供ステータス</th>
+          </tr>
+        </thead>
+        <% @services.each do |service| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= service.name %>
+              </td>
+              <td>
+                <%= service.client.user.last_name + service.client.user.first_name %>
+              </td>
+              <td>
+                <%= form_with model: service, url: admins_services_path, local:true do |f| %>
+                  <%= f.select :is_stopped, Service.is_stoppeds.keys %>
+                  <%= f.submit '更新', class:"btn btn-primary btn-sm"%>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to "削除", admins_service_path(service), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

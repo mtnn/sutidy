@@ -19,10 +19,16 @@ Rails.application.routes.draw do
     get 'clients/analytics/:id' => 'clients#edit'
     patch 'clients/analytics' => 'clients#update'
 
-    resources :services ,only: [:index, :show, :edit, :update, :new, :create]
+    resources :services ,only: [:index, :show, :new, :create, :edit, :update] do
+      collection do
+        post 'services' => 'services#subscribe', as: 'new_subscribe'
+      end
+    end
+
   end
 
   namespace :admins do
+    resources :services, only: [:index, :update, :destroy]
     resources :genres ,only: [:index, :create, :destroy]
   end
 

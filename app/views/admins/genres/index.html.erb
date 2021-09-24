@@ -1,13 +1,13 @@
 <div class='container'>
-
-  <h4>ジャンル一覧</h4>
-  <%= form_with model: @genre, url:'/admins/genres', local: true, scope: "genre" do |t| %>
-    <div class="form-group">
-      <label for="genre_name">ジャンル名</label>
-      <%= t.text_field :genre_name %>
-      <%=t.submit '追加', class: "btn btn-success" %>
-    </div>
-  <% end %>
+  <div>
+    <%= form_with model: @genre, url:'/admins/genres', local: true, scope: "genre" do |t| %>
+      <div class="form-group">
+        <label for="genre_name">ジャンル名</label>
+        <%= t.text_field :genre_name %>
+        <%=t.submit '追加', class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
 
   <div class='row'>
     <div class='col-md-5'>

@@ -26,43 +26,38 @@
             <% if user_signed_in? %>
               <ul class="navbar-nav ml-auto">
                 <li>
-                  <%= link_to " マイページ", users_mypage_path %>
+                  <%= link_to " マイページ", users_mypage_path, class: "btn btn-primary ml-3" %>
                 </li>
                 <li>
-                  <%= link_to " サービスを探す", services_path %>
+                  <%= link_to " サービス一覧", services_path, class: "btn btn-warning ml-3" %>
                 </li>
                 <li>
-                  <%= link_to " ログアウト", destroy_user_session_path, method: :delete %>
+                  <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger ml-3" %>
                 </li>
               </ul>
             <% elsif admin_signed_in? %>
               <ul class="navbar-nav ml-auto">
                 <li>
-                  <%= link_to " サービス一覧" %>
+                  <%= link_to " ジャンル一覧", admins_genres_path, class: "btn btn-primary ml-3"%>
                 </li>
                 <li>
-                  <%= link_to " 会員一覧" %>
+                  <%= link_to " サービス一覧", admins_services_path, class: "btn btn-warning ml-3" %>
                 </li>
+
                 <li>
-                  <%= link_to " ジャンル一覧", admins_genres_path %>
-                </li>
-                <li>
-                  <%= link_to " ログアウト", destroy_admin_session_path, method: :delete %>
+                  <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger ml-3"%>
                 </li>
               </ul>
             <% else %>
               <ul class="navbar-nav ml-auto">
                 <li>
-                  <%= link_to " サービスを探す", services_path %>
+                  <%= link_to " サービス一覧", services_path, class: "btn btn-warning ml-3" %>
                 </li>
                 <li>
-                  <%= link_to " お問い合わせ" %>
+                  <%= link_to " 新規登録", new_user_registration_path, class: "btn btn-primary ml-3" %>
                 </li>
                 <li>
-                  <%= link_to " 新規登録", new_user_registration_path %>
-                </li>
-                <li>
-                  <%= link_to " ログイン", new_user_session_path %>
+                  <%= link_to " ログイン", new_user_session_path, class: "btn btn-success ml-3" %>
                 </li>
               </ul>
             <% end %>

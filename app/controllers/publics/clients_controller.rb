@@ -9,12 +9,6 @@ class Publics::ClientsController < ApplicationController
     @subscribed_numbers = @service.subscribed_item
   end
 
-  def new
-  end
-
-  def create
-  end
-
   def edit
   end
 

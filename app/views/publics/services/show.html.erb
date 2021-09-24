@@ -8,14 +8,22 @@
       <% end %>
     </div>
     <div class="col-md-5">
-      <h2><%= @service.name %></h2>
+      <h4><%= @service.name %></h4>
       <p><%= @service.description %></p>
       <p>¥<strong><%= @service.price %></strong>(税込)</p>
-      <%= form_with model: @subscribed_item, url:'/services', local:true do |f| %>
-       <%= f.hidden_field :service_id, value: @service.id %>
-       <%= f.hidden_field :subscribed_price, value: @service.price %>
-       <%= f.submit 'サブスクライブ' , class: 'btn btn-success btn-sm'%>
+
+      <% if current_user.client.present? && current_user.client.id == @service.client_id %>
+        <%= link_to "サービス編集", edit_service_path, class: "btn btn-sm btn-success" %>
+      <% elsif current_user.subscribed_items.find_by(service_id: @service.id) %>
+        <button class="btn btn-sm btn-success">サブスクライブ中</button>
+      <% else %>
+        <%= form_with model: @subscribed_item, url: new_subscribe_services_path, local:true do |f| %>
+         <%= f.hidden_field :service_id, value: @service.id %>
+         <%= f.hidden_field :subscribed_price, value: @service.price %>
+         <%= f.submit 'サブスクライブ' , class: 'btn btn-success btn-sm'%>
+        <% end %>
       <% end %>
+
     </div>
   </div>
 </div>
