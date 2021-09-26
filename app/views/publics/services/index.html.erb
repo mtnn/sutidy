@@ -9,11 +9,11 @@
     </div>
     <div class="col-md-9">
       <% @services.each do |service| %>
-        <table class="border">
+        <table class="service-items border">
           <tr>
             <td>
               <% if service.image.attached? %>
-                <%= image_tag service.image %>
+                <%= image_tag service.image.variant(resize:'150x120') %>
               <% else %>
                 <%= image_tag 'sutidy_noimage.png', size: '150x120' %>
               <% end %>

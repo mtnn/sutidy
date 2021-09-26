@@ -21,7 +21,7 @@ User.create!(
   last_name_kana: 'スダ',
   first_name_kana: 'サブロウ',
   gender: 0,
-  age: 2,
+  age: 1,
   postal_code: '1230001',
   address: '東京都新宿区新宿4-1-9',
   is_deleted: 'false',
@@ -35,7 +35,7 @@ User.create!(
   last_name_kana: 'スドウ',
   first_name_kana: 'カナ',
   gender: 1,
-  age: 3,
+  age: 2,
   postal_code: '1230002',
   address: '東京都豊島区西池袋1-17−10',
   is_deleted: 'false',
@@ -49,7 +49,7 @@ User.create!(
   last_name_kana: 'スガワラ',
   first_name_kana: 'ショウ',
   gender: 0,
-  age: 4,
+  age: 3,
   postal_code: '1230003',
   address: '東京都目黒区上目黒1-22-10',
   is_deleted: 'false',
@@ -63,7 +63,7 @@ User.create!(
   last_name_kana: 'スギタ',
   first_name_kana: 'チエ',
   gender: 1,
-  age: 5,
+  age: 4,
   postal_code: '1230004',
   address: '東京都北区赤羽1-1-1',
   is_deleted: 'false',
@@ -86,17 +86,14 @@ Genre.create!(
 #clients テストデータ
 Client.create!(
   user_id: 1,
-  service_id: 1,
   )
 
 Client.create!(
   user_id: 2,
-  service_id: 2,
   )
 
 Client.create!(
   user_id: 3,
-  service_id: 3,
   )
 
 #サブスクサービス テストデータ

@@ -10,14 +10,20 @@ class Publics::UsersController < ApplicationController
 
   def create
     @new_item = OutsideItem.new(outside_item_params)
+    @new_item.user = current_user
     if @new_item.save
       redirect_to users_mypage_path
     else
+      @items = current_user.subscribed_items.all
+      @outside_items = current_user.outside_items.all
       render :mypage
     end
   end
 
   def destroy
+    outside_item = OutsideItem.find(params[:id])
+    outside_item.destroy
+    redirect_to users_mypage_path
   end
 
   def profile

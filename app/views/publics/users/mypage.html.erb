@@ -10,7 +10,7 @@
     <div class="col-md-8">
       <h4>▼アイテム一覧</h4>
       <% @items.each do |item| %>
-        <table class="border">
+        <table class="mypage-items border">
           <tr>
             <td>
               <%= item.service.name %>
@@ -25,15 +25,18 @@
       <% end %>
 
       <% @outside_items.each do |outside_item| %>
-        <table class="border">
+        <table class="mypage-items border">
           <tr>
             <td>
-              <%= outside_item.service.name %>
+              <%= outside_item.outside_name %>
             </td>
             <td>
               <div class="text-right">
                 <strong>¥<%= outside_item.outside_price %></strong>
               </div>
+            </td>
+            <td>
+              
             </td>
           </tr>
         </table>

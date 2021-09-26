@@ -6,7 +6,14 @@ class Publics::ClientsController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
-    @subscribed_numbers = @service.subscribed_items.all
+    @subscribed_items = @service.subscribed_items.all
+
+    @gender_chart = {'男性' => 0, '女性' => 0}
+    @age_chart = {'１９歳未満' => 0, '２０代' => 0, '３０代' => 0, '４０代' => 0, '５０代以上' => 0}
+    @subscribed_items.each do |subscribed_item|
+      @gender_chart[subscribed_item.user.gender] += 1
+      @age_chart[subscribed_item.user.age] += 1
+    end
   end
 
   def update

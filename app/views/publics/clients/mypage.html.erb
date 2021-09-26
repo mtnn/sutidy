@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mt-3">
+    <div class="col-md-9 mt-3">
       <h4>展開サービス一覧</h4>
       <% @services.each do |service| %>
-        <table class="border">
+        <table class="service-items border">
           <tr>
             <td>
               <% if service.image.attached? %>
-                <%= image_tag service.image %>
+                <%= image_tag service.image.variant(resize:'150x120') %>
               <% else %>
                 <%= image_tag 'sutidy_noimage.png', size: '150x120' %>
               <% end %>
@@ -20,10 +20,11 @@
             </td>
           </tr>
         </table>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
-    <div class="col-md-4 mt-5">
+
+    <div class="col-md-3 mt-5">
       <%= link_to(new_service_path) do %>
         <button class="btn btn-warning btn-lg" >新規サービス作成</button>
       <% end %>

@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :outside_items, dependent: :destroy
 
   enum gender: {男性: 0, 女性: 1}
-  enum age: {１９歳未満: 0, ２０代前半: 1, ２０代後半: 2, ３０代前半: 3, ３０代後半: 4, ４０代前半: 5, ４０代後半: 6, ５０代前半: 7, ５０代後半: 8, ６０歳以上: 9}
+  enum age: {１９歳未満: 0, ２０代: 1, ３０代: 2, ４０代: 3, ５０代以上: 4}
 
 end

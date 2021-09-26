@@ -16,3 +16,24 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.main-container {
+  background-image: image-url('sutidy_top.jpg');
+  color: white;
+  height: 500px;
+  background-size:cover;
+  text-align:center;
+}
+
+.title {
+  font-size: 60px;
+}
+
+.service-items {
+  width: 800px;
+}
+
+.mypage-items {
+  width: 600px;
+  height: 100px;
+}
