@@ -21,9 +21,6 @@ class Admins::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
   end
 
-  def update
-  end
-
   def destroy
     genre = Genre.find(params[:id])
     genre.destroy

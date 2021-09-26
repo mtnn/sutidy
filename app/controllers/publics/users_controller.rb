@@ -1,13 +1,20 @@
 class Publics::UsersController < ApplicationController
 
   def mypage
+    @items = current_user.subscribed_items.all
+    @outside_items = current_user.outside_items.all
+    @total_payment = total_payment(@items)
 
-  end
-
-  def new_item
+    @new_item = OutsideItem.new
   end
 
   def create
+    @new_item = OutsideItem.new(outside_item_params)
+    if @new_item.save
+      redirect_to users_mypage_path
+    else
+      render :mypage
+    end
   end
 
   def destroy
@@ -34,5 +41,17 @@ class Publics::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :age)
+  end
+
+  def outside_item_params
+    params.require(:outside_item).permit(:outside_name, :outside_price)
+  end
+
+  def total_payment(items)
+    sum = 0
+    items.each do |item|
+      sum += item.subscribed_price
+    end
+    sum.to_i
   end
 end

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
 
     get 'users/mypage' => 'users#mypage'
-    get 'users/mypage' => 'users#new_item'
     post 'users/mypage' => 'users#create'
     get 'users/mypage' => 'users#destroy'
 
@@ -15,9 +14,8 @@ Rails.application.routes.draw do
     patch 'users/quit' => 'users#quit'
 
     get 'clients/mypage' => 'clients#mypage'
-    get 'clients/analytics/:id' => 'clients#show'
-    get 'clients/analytics/:id' => 'clients#edit'
-    patch 'clients/analytics' => 'clients#update'
+    get 'clients/analytics/:id', to: 'clients#show', as: 'clients_analytics'
+    patch 'clients/analytics/:id', to: 'clients#update', as: 'update_analytics'
 
     resources :services ,only: [:index, :show, :new, :create, :edit, :update] do
       collection do

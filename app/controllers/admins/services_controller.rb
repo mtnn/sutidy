@@ -5,7 +5,7 @@ class Admins::ServicesController < ApplicationController
   end
 
   def update
-    @services = Service.find(params[:id])
+    @service = Service.find(params[:id])
     @service.update(update_service_params)
     redirect_to admins_services_path
   end

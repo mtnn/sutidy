@@ -1,23 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 offset-md-1">
+    <div class="col-md-3">
       <% @genres.each do |genre| %>
-        <div>
+        <div class="text-center">
           <%= genre.genre_name %>
         </div>
       <% end %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       <% @services.each do |service| %>
-        <a>
-        <% if service.image.attached? %>
-          <%= image_tag service.image %>
-        <% else %>
-          <%= image_tag 'sutidy_noimage.png', size: '150x120' %>
-        <% end %>
-        </a>
-        <h5><%= link_to service.name, service_path(service.id) %></h5>
-        <p>¥<strong><%= service.price %></strong>(税込)</p>
+        <table class="border">
+          <tr>
+            <td>
+              <% if service.image.attached? %>
+                <%= image_tag service.image %>
+              <% else %>
+                <%= image_tag 'sutidy_noimage.png', size: '150x120' %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to service.name, service_path(service.id) %>
+              <div class="text-right">
+                ¥<strong><%= service.price %></strong>(税込)
+              </div>
+            </td>
+          </tr>
+        </table>
       <% end %>
     </div>
   </div>
