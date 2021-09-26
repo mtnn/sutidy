@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
     get 'users/mypage' => 'users#mypage'
     post 'users/mypage' => 'users#create'
-    get 'users/mypage' => 'users#destroy'
+    delete 'users/mypage/:id' => 'users#destroy'
 
     get 'users/profile' => 'users#profile'
     get 'users/profile/edit' => 'users#edit'
@@ -22,7 +22,6 @@ Rails.application.routes.draw do
         post 'services' => 'services#subscribe', as: 'new_subscribe'
       end
     end
-
   end
 
   namespace :admins do
