@@ -3,7 +3,7 @@ class Publics::UsersController < ApplicationController
   def mypage
     @items = current_user.subscribed_items.all
     @outside_items = current_user.outside_items.all
-    @total_payment = total_payment(@items)
+    @total_payment = total_payment(@items) + outside_item_total_payment(@outside_items)
 
     @new_item = OutsideItem.new
   end
@@ -57,6 +57,14 @@ class Publics::UsersController < ApplicationController
     sum = 0
     items.each do |item|
       sum += item.subscribed_price
+    end
+    sum.to_i
+  end
+
+  def outside_item_total_payment(items)
+    sum = 0
+    items.each do |item|
+      sum += item.outside_price
     end
     sum.to_i
   end

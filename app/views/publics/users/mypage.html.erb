@@ -32,7 +32,7 @@
             </td>
             <td>
               <div class="text-right">
-                <%= link_to "削除", users_mypage_path(outside_item), method: :delete, data: { confirm: "削除しますか？" }, class: "mr-5 btn btn-danger" %>
+                <%= link_to "削除", outside_item_destroy_path(outside_item), method: :delete, data: { confirm: "削除しますか？" }, class: "mr-5 btn btn-danger" %>
                 <strong>¥<%= outside_item.outside_price %></strong>
               </div>
             </td>

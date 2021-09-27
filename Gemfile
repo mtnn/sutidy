@@ -70,6 +70,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem "chartkick"
+gem 'whenever', require: false
 
 gem 'dotenv-rails'
 group :production do
