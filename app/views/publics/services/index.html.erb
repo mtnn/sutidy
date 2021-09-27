@@ -13,9 +13,9 @@
           <tr>
             <td>
               <% if service.image.attached? %>
-                <%= image_tag service.image.variant(resize:'150x120') %>
+                <%= image_tag service.image.variant(resize:'150x120!') %>
               <% else %>
-                <%= image_tag 'sutidy_noimage.png', size: '150x120' %>
+                <%= image_tag asset_path('sutidy_noimage.png'), size: '150x120' %>
               <% end %>
             </td>
             <td>

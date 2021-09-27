@@ -6,7 +6,7 @@ class Admins::ServicesController < ApplicationController
 
   def update
     @service = Service.find(params[:id])
-    @service.update(update_service_params)
+    @service.update(update_service_status_params)
     redirect_to admins_services_path
   end
 
@@ -18,7 +18,7 @@ class Admins::ServicesController < ApplicationController
 
   private
 
-  def update_service_params
+  def update_service_status_params
     params.require(:service).permit(:is_stopped)
   end
 

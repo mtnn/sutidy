@@ -17,9 +17,9 @@ class Publics::ClientsController < ApplicationController
   end
 
   def update
-    @item = SubscribedItem.find(params[:id])
-    @item.update(update_status_params)
-    redirect_to clients_analytics_path(@item.id)
+    item = SubscribedItem.find(params[:id])
+    item.update(update_status_params)
+    redirect_to clients_analytics_path(item.service_id)
   end
 
   private

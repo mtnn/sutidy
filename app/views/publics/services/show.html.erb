@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-7">
       <% if @service.image.attached? %>
-        <%= image_tag @service.image.variant(resize: '320x240') %>
+        <%= image_tag @service.image.variant(resize:'600x450!') %>
       <% else %>
-        <%= image_tag 'sutidy_noimage.png' %>
+        <%= image_tag asset_path('sutidy_noimage.png'), size: '600x450' %>
       <% end %>
     </div>
     <div class="col-md-5">
@@ -14,10 +14,10 @@
 
       <% if @service.is_stopped == "承認中"%>
         <button class="btn btn-success">Coming soon..</button>
+      <% elsif user_signed_in? && current_user.client.present? && current_user.client.id == @service.client_id %>
+        <%= link_to "サービス編集", edit_service_path, class: "btn btn-success" %>
       <% elsif @service.is_stopped == "提供停止"%>
         <button class="btn btn-secondary">新規受付終了</button>
-      <% elsif user_signed_in? && current_user.client.present? && current_user.client.id == @service.client_id %>
-        <%= link_to "サービス編集", edit_service_path, class: "btn btn-sm btn-success" %>
       <% elsif user_signed_in? && current_user.subscribed_items.find_by(service_id: @service.id) %>
         <button class="btn btn-sm btn-success">サブスクライブ中</button>
       <% elsif user_signed_in? %>
