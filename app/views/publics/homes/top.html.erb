@@ -6,5 +6,29 @@
       <%= link_to "サービスを探す", services_path, class: 'btn top-btn btn-light mt-5' %>
     </div>
   </div>
+
+  <div class="row">
+
+    <div class="col-md-6 middle-content my-5">
+      <h4 class="font-weight-bold">どんなサービスがあるの？</h4>
+      <p>Sutidyには多様なサービスが展開されているので<br>興味のあるジャンルからサービスを探してみよう</p>
+      <%= link_to "サービスを探す", services_path, class: "btn btn-dark" %>
+
+    </div>
+    <div class="col-md-6 middle-content my-5">
+      <h4 class="font-weight-bold">自分のサービスを始めてみたい！</h4>
+      <p>Sutidyでは気軽にサービス展開が可能！<br>自身のちょっとした強みを活かしてみませんか？</p>
+      <% if user_signed_in? && current_user.client.present? %>
+        <%= link_to "サービスを始める", clients_mypage_path, class: "btn btn-dark" %>
+      <% elsif user_signed_in? %>
+        <%= form_with model: @new_client, url: root_path, local:true do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit 'サービスを始める', class: 'btn btn-dark'%>
+        <% end %>
+      <% else %>
+        <%= link_to "サービスを始める", new_user_session_path, class: 'btn btn-dark'%>
+      <% end %>
+    </div>
+  </div>
 </div>
 

@@ -1,4 +1,5 @@
 class Publics::ServicesController < ApplicationController
+  before_action :authenticate_user!,except: [:index, :show]
 
   def index
     @genres = Genre.all
@@ -7,7 +8,7 @@ class Publics::ServicesController < ApplicationController
 
   def show
     @service = Service.find(params[:id])
-    @subscribed_item = SubscribedItem.new
+    @new_subscribed_item = SubscribedItem.new
   end
 
   def edit
@@ -44,12 +45,6 @@ class Publics::ServicesController < ApplicationController
     @subscribed_item.save
     redirect_to users_mypage_path
   end
-
-  # def destroy
-  #   service = Service.find(params[:id])
-  #   service.destroy
-  #   redirect_to admins_services_path
-  # end
 
   private
 

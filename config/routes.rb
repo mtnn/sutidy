@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   scope module: :publics do
     root to: 'homes#top'
+    post '/' => 'homes#create'
 
     get 'users/mypage' => 'users#mypage'
     post 'users/mypage' => 'users#create'

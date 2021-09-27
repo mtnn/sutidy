@@ -28,9 +28,11 @@
                 <li>
                   <%= link_to "マイページ", users_mypage_path, class: "btn btn-primary ml-3" %>
                 </li>
+                <% if current_user.client.present? %>
                 <li>
                   <%= link_to "クライアント", clients_mypage_path, class: "btn btn-primary ml-3" %>
                 </li>
+                <% end %>
                 <li>
                   <%= link_to "サービス一覧", services_path, class: "btn btn-warning ml-3" %>
                 </li>
