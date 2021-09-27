@@ -8,9 +8,9 @@
       <% end %>
     </div>
     <div class="col-md-5">
-      <h4><%= @service.name %></h4>
-      <p><%= @service.description %></p>
-      <p>¥<strong><%= @service.price %></strong>(税込)</p>
+      <h4 class="mt-5 font-weight-bold"><%= @service.name %></h4>
+      <p class="mt-4"><%= @service.description %></p>
+      <p class="my-4 font-weight-bold">¥<strong><%= @service.price %></strong>(税込)</p>
 
       <% if @service.is_stopped == "承認中"%>
         <button class="btn btn-success">Coming soon..</button>
