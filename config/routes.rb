@@ -14,11 +14,13 @@ Rails.application.routes.draw do
 
     get 'clients/mypage' => 'clients#mypage'
     get 'clients/analytics/:id', to: 'clients#show', as: 'clients_analytics'
-    patch 'clients/analytics/:id', to: 'clients#update', as: 'update_analytics'
+    patch 'clients/analytics/:id', to: 'clients#update', as: 'update_status'
+    delete 'clients/analytics/:id' => 'clients#destroy', as: "destroy_subscribed_item"
 
     resources :services ,only: [:index, :show, :new, :create, :edit, :update] do
       collection do
         post 'services' => 'services#subscribe', as: 'new_subscribe'
+        patch 'services/:id' => 'services#unsubscribe', as: 'unsubscribe'
       end
     end
   end

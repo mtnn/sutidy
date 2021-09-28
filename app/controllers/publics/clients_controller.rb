@@ -22,10 +22,16 @@ class Publics::ClientsController < ApplicationController
     redirect_to clients_analytics_path(item.service_id)
   end
 
+  def destroy
+    item = SubscribedItem.find(params[:id])
+    item.destroy
+    redirect_to clients_analytics_path(item.service_id)
+  end
+
   private
 
   def update_status_params
-    params.require(:subscribed_item).permit(:payment_status)
+    params.require(:subscribed_item).permit(:payment_status, :subscribe_status)
   end
 
 end

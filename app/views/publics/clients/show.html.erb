@@ -32,10 +32,14 @@
           <tr>
             <td><%= item.user.last_name + "" + item.user.first_name %></td>
             <td>
-              <%= form_with model: item, url: update_analytics_path(item.id), method: :patch, local:true do |f| %>
+              <%= form_with model: item, url: update_status_path(item.id), method: :patch, local:true do |f| %>
                 <%= f.select :payment_status, SubscribedItem.payment_statuses.keys %>
+                <%= f.select :subscribe_status, SubscribedItem.subscribe_statuses.keys %>
                 <%= f.submit '更新', class:"btn btn-primary btn-sm ml-5"%>
               <% end %>
+            </td>
+            <td>
+              <%= link_to "削除", destroy_subscribed_item_path(item), method: :delete, data: { confirm: "削除しますか？" }, class: "btn btn-sm btn-danger" %>
             </td>
           </tr>
           <% end %>

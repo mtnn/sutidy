@@ -12,14 +12,25 @@
       <p class="mt-4"><%= @service.description %></p>
       <p class="my-4 font-weight-bold">¥<strong><%= @service.price %></strong>(税込)</p>
 
+
       <% if @service.is_stopped == "承認中"%>
         <button class="btn btn-success">Coming soon..</button>
+
       <% elsif user_signed_in? && current_user.client.present? && current_user.client.id == @service.client_id %>
         <%= link_to "サービス編集", edit_service_path, class: "btn btn-success" %>
+
       <% elsif @service.is_stopped == "提供停止"%>
         <button class="btn btn-secondary">新規受付終了</button>
+
+      <% elsif user_signed_in? && current_user.subscribed_items.find_by(service_id: @service.id) && @subscribed_item.subscribe_status == "解除申請中" %>
+        <button class="btn btn-secondary">解除手続き中..</button>
+
       <% elsif user_signed_in? && current_user.subscribed_items.find_by(service_id: @service.id) %>
-        <button class="btn btn-sm btn-success">サブスクライブ中</button>
+        <%= form_with model: @subscribed_item, url: unsubscribe_services_path, local:true do |f| %>
+          <%= f.hidden_field :subscribe_status, value: "解除申請中" %>
+          <%= f.submit 'サブスクライブ解除', class: 'btn btn-danger'%>
+        <% end %>
+
       <% elsif user_signed_in? %>
         <%= form_with model: @new_subscribed_item, url: new_subscribe_services_path, local:true do |f| %>
           <%= f.hidden_field :service_id, value: @service.id %>
