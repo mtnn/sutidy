@@ -1,16 +1,18 @@
 <div class='container'>
-  <div>
-    <%= form_with model: @genre, url:'/admins/genres', local: true, scope: "genre" do |t| %>
-      <div class="form-group">
-        <label for="genre_name">ジャンル名</label>
-        <%= t.text_field :genre_name %>
-        <%=t.submit '追加', class: "btn btn-success" %>
-      </div>
-    <% end %>
+  <div class="row mt-3">
+    <div>
+      <%= form_with model: @genre, url:'/admins/genres', local: true, scope: "genre" do |t| %>
+        <div class="form-group">
+          <label for="genre_name">ジャンル名</label>
+          <%= t.text_field :genre_name %>
+          <%=t.submit '追加', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class='row'>
-    <div class='col-md-5'>
+    <div class='col-md-6'>
       <table class='table'>
         <thead class="thead-light">
           <tr>
