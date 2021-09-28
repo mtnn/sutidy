@@ -9,6 +9,7 @@ class Publics::ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @new_subscribed_item = SubscribedItem.new
+    @subscribed_item = current_user.subscribed_items.find_by(service_id: @service.id)
   end
 
   def edit
@@ -46,6 +47,13 @@ class Publics::ServicesController < ApplicationController
     redirect_to users_mypage_path
   end
 
+  def unsubscribe
+    service = Service.find(params[:id])
+    subscribed_item = current_user.subscribed_items.find_by(service_id: service.id)
+    subscribed_item.update(unsubscribe_params)
+    redirect_to users_mypage_path
+  end
+
   private
 
   def services_params
@@ -60,4 +68,7 @@ class Publics::ServicesController < ApplicationController
     params.require(:service).permit(:name, :description, :image)
   end
 
+  def unsubscribe_params
+    params.require(:subscribed_item).permit(:subscribe_status)
+  end
 end

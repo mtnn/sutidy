@@ -1,11 +1,11 @@
-<div class="containar">
-  <div class="row no-gutters">
-    <div class="col-md-4">
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-md-6">
       <h5>サービス概要編集</h5>
 
       <%= form_with model: @service, url: service_path , local:true do |f| %>
 
-        <div class="form-group">
+        <div class="mt-4 form-group">
           <label>サービス名</label>
           <%= f.text_field :name, class: "form-control" %>
         </div>
