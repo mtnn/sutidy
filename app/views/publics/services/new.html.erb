@@ -1,0 +1,37 @@
+<div class="containar">
+  <div class="row">
+    <div class="col-md-6 mt-5">
+      <h5>新規サービス登録申請</h5>
+
+      <%= form_with model: @service, url: services_path, local:true, scope: "service" do |f| %>
+
+        <div class="form-group">
+          <label>サービス名</label>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+        	<label>サービス説明分</label>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+           <label>月間費用(税込)</label>
+          <%= f.number_field :price, class: "form-control" %>円
+        </div>
+
+        <div class="form-group">
+          <label>該当ジャンル</label>
+          <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, include_blank: "--選択して下さい--" %>
+        </div>
+
+        <div class="form-group">
+          <label>サービス詳細画像</label>
+          <%= f.file_field :image %>
+        </div>
+
+          <%= f.submit '登録申請', class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

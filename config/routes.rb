@@ -1,20 +1,31 @@
 Rails.application.routes.draw do
 
-  namespace :publics do
-    get 'services/index'
-    get 'services/show'
-    get 'services/update'
-  end
-  namespace :publics do
-    get 'homes/top'
-  end
   scope module: :publics do
     root to: 'homes#top'
+    post '/' => 'homes#create'
 
-    resources :services ,only: [:index, :show, :update]
+    get 'users/mypage' => 'users#mypage'
+    post 'users/mypage' => 'users#create'
+    delete 'users/mypage/:id' => 'users#destroy', as: "outside_item_destroy"
+
+    get 'users/profile' => 'users#profile'
+    get 'users/profile/edit' => 'users#edit'
+    patch 'users/profile' => 'users#update'
+
+    get 'clients/mypage' => 'clients#mypage'
+    get 'clients/analytics/:id', to: 'clients#show', as: 'clients_analytics'
+    patch 'clients/analytics/:id', to: 'clients#update', as: 'update_analytics'
+
+    resources :services ,only: [:index, :show, :new, :create, :edit, :update] do
+      collection do
+        post 'services' => 'services#subscribe', as: 'new_subscribe'
+      end
+    end
   end
 
   namespace :admins do
+    resources :services, only: [:index, :update, :destroy]
+    resources :genres ,only: [:index, :create, :destroy]
   end
 
   devise_for :admins, :skip =>[:registrations, :passwords], controllers: {
