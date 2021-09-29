@@ -8,36 +8,91 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <h4>▼アイテム一覧</h4>
+      <h5>▼登録サービス一覧</h5>
+
       <% @items.each do |item| %>
-        <table class="mypage-items border">
-          <tr>
-            <td>
-              <%= item.service.name %>
-            </td>
-            <td>
-              <div class="text-right">
-                <strong>¥<%= item.subscribed_price %></strong>
-              </div>
-            </td>
-          </tr>
-        </table>
+        <% if item.subscribed_priority == '有効' && item.subscribe_status == '登録中' %>
+          <table class="mypage-items border">
+            <tr>
+              <td>
+                <%= item.service.name %>
+              </td>
+              <td>
+                <%= form_with model: item, url: change_subscribed_priority_path(item), local:true do |f| %>
+                  <%= f.hidden_field :subscribed_priority, value: '無効' %>
+                  <%= f.submit '移動', class: 'btn btn-warning'%>
+                <% end %>
+              </td>
+              <td>
+                <div class="text-right">
+                  <strong>¥<%= item.subscribed_price %></strong>
+                </div>
+              </td>
+            </tr>
+          </table>
+        <% end %>
       <% end %>
 
       <% @outside_items.each do |outside_item| %>
-        <table class="mypage-items border">
-          <tr>
-            <td>
-              <%= outside_item.outside_name %>
-            </td>
-            <td>
-              <div class="text-right">
-                <%= link_to "削除", outside_item_destroy_path(outside_item), method: :delete, data: { confirm: "削除しますか？" }, class: "mr-5 btn btn-danger" %>
-                <strong>¥<%= outside_item.outside_price %></strong>
-              </div>
-            </td>
-          </tr>
-        </table>
+        <% if outside_item.outside_priority == '有効' %>
+          <table class="mypage-items border">
+            <tr>
+              <td>
+                <%= outside_item.outside_name %>
+              </td>
+              <td>
+                <div class="text-right">
+                  <%= link_to "削除", outside_item_destroy_path(outside_item), method: :delete, data: { confirm: "削除しますか？" }, class: "mr-5 btn btn-danger" %>
+                  <strong>¥<%= outside_item.outside_price %></strong>
+                </div>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+
+      <h5 class="mt-5">▼解除検討サービス一覧</h5>
+      <% @items.each do |item| %>
+        <% if item.subscribed_priority == '無効' %>
+          <table class="mypage-items border">
+            <tr>
+              <td>
+                <%= item.service.name %>
+              </td>
+              <td>
+                <%= form_with model: item, url: change_subscribed_priority_path(item), local:true do |f| %>
+                  <%= f.hidden_field :subscribed_priority, value: '有効' %>
+                  <%= f.submit '移動', class: 'btn btn-warning'%>
+                <% end %>
+              </td>
+              <td>
+                <div class="text-right">
+                  <strong>¥<%= item.subscribed_price %></strong>
+                </div>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+
+
+
+      <% @outside_items.each do |outside_item| %>
+        <% if outside_item.outside_priority == '無効' %>
+          <table class="mypage-items border">
+            <tr>
+              <td>
+                <%= outside_item.outside_name %>
+              </td>
+              <td>
+                <div class="text-right">
+                  <%= link_to "削除", outside_item_destroy_path(outside_item), method: :delete, data: { confirm: "削除しますか？" }, class: "mr-5 btn btn-danger" %>
+                  <strong>¥<%= outside_item.outside_price %></strong>
+                </div>
+              </td>
+            </tr>
+          </table>
+        <% end %>
       <% end %>
     </div>
 

@@ -28,14 +28,14 @@
       <% elsif user_signed_in? && current_user.subscribed_items.find_by(service_id: @service.id) %>
         <%= form_with model: @subscribed_item, url: unsubscribe_services_path, local:true do |f| %>
           <%= f.hidden_field :subscribe_status, value: "解除申請中" %>
-          <%= f.submit 'サブスクライブ解除', class: 'btn btn-danger'%>
+          <%= f.submit 'サブスクライブ解除', class: 'btn btn-danger', data: { confirm: "解除しますか？" }%>
         <% end %>
 
       <% elsif user_signed_in? %>
         <%= form_with model: @new_subscribed_item, url: new_subscribe_services_path, local:true do |f| %>
           <%= f.hidden_field :service_id, value: @service.id %>
           <%= f.hidden_field :subscribed_price, value: @service.price %>
-          <%= f.submit 'サブスクライブ', class: 'btn btn-success'%>
+          <%= f.submit 'サブスクライブ', class: 'btn btn-success', data: { confirm: "サブスクライブしますか？" }%>
         <% end %>
       <% else %>
         <%= link_to "サブスクライブ", new_user_session_path, class: 'btn btn-success'%>
