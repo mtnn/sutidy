@@ -13,7 +13,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to service.name, clients_analytics_path(service.client_id) %>
+              <%= link_to service.name, clients_analytics_path(service) %>
               <div class="text-right">
                 ¥<strong><%= service.price %></strong>(税込)
               </div>
