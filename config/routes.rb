@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#mypage'
     post 'users/mypage' => 'users#create'
     delete 'users/mypage/:id' => 'users#destroy', as: "outside_item_destroy"
+    patch 'users/mypage/:id' => 'users#change_sub_priority', as: "change_subscribed_priority"
+    patch 'users/mypage/:id' => 'users#change_out_priority', as: "change_outside_priority"
 
     get 'users/profile' => 'users#profile'
     get 'users/profile/edit' => 'users#edit'

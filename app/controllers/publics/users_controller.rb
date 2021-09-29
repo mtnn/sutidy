@@ -43,6 +43,19 @@ class Publics::UsersController < ApplicationController
     end
   end
 
+  def change_sub_priority
+    subscribed_item = SubscribedItem.find(params[:id])
+    subscribed_item.update(change_subscribed_priority)
+    redirect_to users_mypage_path
+  end
+
+  def change_out_priority
+    outside_item = OutsideItem.find(params[:id])
+    byebug
+    outside_item.update(change_outside_priority)
+    redirect_to users_mypage_path
+  end
+
   private
 
   def user_params
@@ -53,10 +66,20 @@ class Publics::UsersController < ApplicationController
     params.require(:outside_item).permit(:outside_name, :outside_price)
   end
 
+  def change_subscribed_priority
+    params.require(:subscribed_item).permit(:subscribed_priority)
+  end
+
+  def chenge_outside_priority
+    params.require(:outside_item).permit(:outside_priority)
+  end
+
   def total_payment(items)
     sum = 0
     items.each do |item|
-      sum += item.subscribed_price
+      if item.subscribed_priority == '有効'
+        sum += item.subscribed_price
+      end
     end
     sum.to_i
   end
@@ -64,7 +87,9 @@ class Publics::UsersController < ApplicationController
   def outside_item_total_payment(items)
     sum = 0
     items.each do |item|
-      sum += item.outside_price
+      if item.outside_priority == '有効'
+        sum += item.outside_price
+      end
     end
     sum.to_i
   end

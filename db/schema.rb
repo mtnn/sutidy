@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_28_111852) do
+ActiveRecord::Schema.define(version: 2021_09_29_054948) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_111852) do
     t.integer "user_id"
     t.string "outside_name"
     t.integer "outside_price"
+    t.integer "outside_priority", default: 0
   end
 
   create_table "services", force: :cascade do |t|
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_09_28_111852) do
     t.integer "subscribed_price"
     t.integer "payment_status", default: 0
     t.integer "subscribe_status", default: 0
+    t.integer "subscribed_priority", default: 0
   end
 
   create_table "users", force: :cascade do |t|
