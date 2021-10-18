@@ -9,7 +9,10 @@ class Publics::ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @new_subscribed_item = SubscribedItem.new
-    @subscribed_item = current_user.subscribed_items.find_by(service_id: @service.id)
+
+    if user_signed_in?
+      @subscribed_item = current_user.subscribed_items.find_by(service_id: @service.id)
+    end
   end
 
   def edit
